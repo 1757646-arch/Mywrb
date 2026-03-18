@@ -21,3 +21,13 @@
     - start
     instance_type: GENERAL_MEDIUM
     shell: SH
+  - action: rake test
+    type: BUILD
+    execute_commands:
+    - bundle install
+    - rake test
+    cached_dirs:
+    - /usr/local/bundle
+    shell: BASH
+    docker_image_name: library/ruby
+    docker_image_tag: 4.0.1
