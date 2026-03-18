@@ -12,3 +12,5 @@
   do_not_create_commit_status: true
   events:
   - type: WEBHOOK
+  permissions:
+    others: READ_WRITE
