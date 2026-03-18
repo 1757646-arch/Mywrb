@@ -14,3 +14,9 @@
   - type: WEBHOOK
   permissions:
     others: READ_WRITE
+  actions:
+  - action: start
+    type: NATIVE_BUILD_LINUX
+    commands:
+    - start
+    instance_type: GENERAL_MEDIUM
