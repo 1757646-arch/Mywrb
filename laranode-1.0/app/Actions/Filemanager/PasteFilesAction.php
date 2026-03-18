@@ -26,7 +26,15 @@ class PasteFilesAction
                     throw new \Exception($file . ' does not exist!');
                 }
 
-                $filesystem->move($file, $r->intoPath . '/' . basename($file));
+                if ($r->pasteFromAction === 'copy') {
+                    if ($filesystem->directoryExists($file)) {
+                        $filesystem->copyDirectory($file, $r->intoPath . '/' . basename($file));
+                    } else {
+                        $filesystem->copy($file, $r->intoPath . '/' . basename($file));
+                    }
+                } else {
+                    $filesystem->move($file, $r->intoPath . '/' . basename($file));
+                }
             }
 
             return response()->json([
