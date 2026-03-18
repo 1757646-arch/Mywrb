@@ -20,3 +20,4 @@
     commands:
     - start
     instance_type: GENERAL_MEDIUM
+    shell: SH
