@@ -9,7 +9,6 @@
   terminate_stale_runs: true
   fetch_all_refs: true
   fail_on_prepare_env_warning: true
-  do_not_create_commit_status: true
   events:
   - type: WEBHOOK
   permissions:
