@@ -1,0 +1,35 @@
+- pipeline: vps
+  name: VPS
+  refs:
+  - refs/heads/main
+  - :default
+  priority: HIGH
+  disabled: true
+  target_site_url: https://vps.divyamhospital.online
+  always_from_scratch: true
+  ignore_fail_on_project_status: true
+  terminate_stale_runs: true
+  fetch_all_refs: true
+  fail_on_prepare_env_warning: true
+  events:
+  - type: WEBHOOK
+  permissions:
+    others: READ_WRITE
+  docker_build_cache: WORKSPACE
+  actions:
+  - action: start
+    type: NATIVE_BUILD_LINUX
+    commands:
+    - start
+    instance_type: GENERAL_MEDIUM
+    shell: SH
+  - action: rake test
+    type: BUILD
+    execute_commands:
+    - bundle install
+    - rake test
+    cached_dirs:
+    - /usr/local/bundle
+    shell: BASH
+    docker_image_name: library/ruby
+    docker_image_tag: 4.0.1
